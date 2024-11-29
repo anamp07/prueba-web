@@ -1,0 +1,336 @@
+/* Variables de colores, normalmente lo pondría en el archivo de configuraciones generales de estilos */
+:root {
+    --card-bg: #341D76;
+    --text: #F3FBFA;
+    --btn-primary: #005D61;
+    --btn-secondary: #235090;
+    --btn-action: #DFD3FF;
+    --bodyFont: "Open Sans", serif;
+    --titlesFont: "Montserrat", serif;
+}
+
+.container {
+  padding: 32px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 295px;
+  height: 295px;
+  filter: drop-shadow(0 2.1px 4.1px rgba(0, 0, 0, .25));
+  font-family: var(--bodyFont);
+  color: var(--text);
+  transition: all 1s ease-out;
+  border-radius: 15px;
+  overflow: hidden;
+  
+  &:has(.button:hover) {
+    filter: none;
+    transform: translateY(-5px);
+  }
+  
+  @media (min-width: 768px) {
+    width: 332px;
+    height: 332px;
+  }
+  
+  .card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  #card_shape,
+  #cardback__shape { 
+    fill: #341D76;
+  }
+  
+  .card-front,
+  .card-wrapper {
+    height: 100%
+  }
+  
+  .card-inner {
+    padding: 23px 16px;
+    height: 100%;
+    transition: transform 1s ease-out;
+    transform-style: preserve-3d;
+    
+    @media (min-width: 768px) {
+      padding: 26px 18px;
+    }
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card-img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+  }
+  
+  .card-img {
+    height: 160px;
+    
+    @media (min-width: 768px) {
+       height: 190px;
+    }
+  }
+  
+  .card-title {
+    font-family: var(--titlesFont);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 7px;
+    
+    @media (min-width: 768px) {
+      font-size: 21px;
+    }
+  }
+  
+  .card-front {
+    backface-visibility: hidden;
+  }
+  
+  .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 23px 16px;
+    height: 250px;
+    z-index: 1;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    
+    @media (min-width: 768px) {
+      padding: 26px 18px;
+      height: 280px;
+    }
+    
+    .card-content {
+      justify-content: space-between;
+    }
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-subtitle {
+    font-size: 14px;
+    
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+  
+  .card-divider {
+    display: block;
+    height: 1px;
+    width: 45px;
+    background-color: var(--text);
+    margin-top: 10px;
+    
+    @media (min-width: 768px) {
+      width: 51px;
+      margin-top: 11px;
+    }
+  }
+  
+  .card-description {
+    font-size: 16px;
+    margin-top: 16px;
+    
+    @media (min-width: 768px) {
+      font-size: 18px;
+      margin-top: 18px;
+    }
+  }
+  
+  .card-price {
+    font-family: var(--titlesFont);
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    @media (min-width: 768px) {
+      font-size: 21px;
+    }
+  }
+  
+  .card-add-btn {
+    background-color: var(--btn-action);
+    color: var(--card-bg);
+    border-radius: 50px;
+    padding: 6.5px 13px;
+    font-family: var(--titlesFont);
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    
+    &:hover {
+      background-color: #D7BFFF;
+    }
+    
+    @media (min-width: 768px) {
+      padding: 8.5px 15px;
+      font-size: 14px;
+    }
+  }
+  
+  .card-front {
+    overflow: hidden; 
+    
+    &::after {
+      content: "";
+      background-color: #4E25C6;
+      border-radius: 15px;
+      opacity: 0.2;
+      height: 100%;
+      width: 100%;
+      clip-path: circle(84.4% at 74% -10%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+  
+   .card-back {
+    overflow: hidden; 
+    
+    &::after {
+      content: "";
+      background-color: #4E25C6;
+      border-radius: 15px;
+      opacity: 0.2;
+      height: 100%;
+      width: 100%;
+      clip-path: circle(67.8% at 66% 88%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
+
+.flipped {
+  & .card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.button {
+  background: none;
+  padding: 0;
+  border: none;
+  position: absolute;
+  height: 76px;
+  width: 75px;
+  cursor: pointer;
+  
+  @media (min-width: 768px) {
+    width: 85px;
+    height: 85px;
+  };
+  
+  #button_shape {
+    transition: all 0.5s ease-out;
+    fill: #005D61;
+  }
+  
+  #button-back__shape {
+    transition: all 0.5s ease-out;
+    fill: #235090;
+  }
+  
+  &.button-flip {
+    right: 0;
+    bottom: -1px;
+    
+    &:hover {
+      #button_shape {
+        fill: #0C553F;
+      }
+    }
+  }
+  
+  &.button-back {
+    top: -1px;
+    right: 0;
+  }
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.btn-icon {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  
+  @media (min-width: 768px) {
+    height: 20px;
+    width: 20px;
+  }
+  
+  &.btn-icon-close {
+    top: 13px;
+    right: 14px;
+  }
+    
+  #close,
+  #arrow {
+    fill: var(--text);
+  }
+  
+  &.btn-icon-arrow {
+    bottom: 19px;
+    right: 19px;
+    
+    @media (min-width: 768px) {
+      bottom: 19px;
+      right: 19px;
+    }
+  }
+}
+
+.price-icon {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  
+  @media (min-width: 768px) {
+    height: 20px;
+    width: 20px;
+  }
+  
+  .price-tag {
+    fill: var(--text);
+  }
+}
